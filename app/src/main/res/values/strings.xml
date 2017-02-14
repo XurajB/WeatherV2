@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">My Weather</string>
+
+    <string name="action_search_location">Search Location</string>
+    <string name="action_refresh">Refresh</string>
+    <string name="title_activity_forecast">ForecastActivity</string>
+    <string name="weather_activity_temperature_text">temp data</string>
+    <string name="weather_activity_temp_description">description</string>
+    <string name="weather_activity_location">location</string>
+    <string name="weather_activity_current_condition_text">Current Condition</string>
+    <string name="weather_activity_precipitation_text">Precipitation: 10 mm</string>
+    <string name="forecast_single_date_text">2015-07-14</string>
+    <string name="forecast_single_min_max_text">80/65</string>
+    <string name="forecast_single_temp_description">Partly Cloudy</string>
+    <string name="forecast_single_precipitation_text">Precipitation 8.1</string>
+    <string name="weather_activity_tap_to_forecast_note">Tap anywhere to view 5 day forecast</string>
+    <string name="five_day_forecast_title">" Forecast"</string>
+    <string name="location_search_title">"Search Location"</string>
+    <string name="precipitation_title">"Precipitation "</string>
+    <string name="precipitation_unit">" mm"</string>
+    <string name="fahrenheit_unit">°F</string>
+    <string name="loading_message">Loading..</string>
+    <string name="searching_message">Searching..</string>
+    <string name="search_location_title">Search Location</string>
+    <string name="enter_valid_location_text">Please enter a valid location</string>
+    <string name="ok_text">OK</string>
+    <string name="cancel_text">Cancel</string>
+    <string name="connection_failed_text">Connection to server failed</string>
+
+</resources>
