@@ -1,6 +1,6 @@
 package com.suraj.examples.myweather;
 
-import model.Location;
+import com.suraj.examples.myweather.model.Location;
 
 /**
  * Created by surajbhattarai on 7/12/15.

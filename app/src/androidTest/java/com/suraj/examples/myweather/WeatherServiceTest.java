@@ -4,9 +4,9 @@ import android.test.AndroidTestCase;
 
 import junit.framework.Assert;
 
-import model.Location;
-import service.WeatherService;
-import service.ServiceCallback;
+import com.suraj.examples.myweather.model.Location;
+import com.suraj.examples.myweather.service.WeatherService;
+import com.suraj.examples.myweather.service.ServiceCallback;
 
 /**
  * Created by suraj bhattarai on 7/12/15.

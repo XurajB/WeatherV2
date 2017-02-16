@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import model.Location;
+import com.suraj.examples.myweather.model.Location;
 
 /**
  * Created by surajbhattarai on 7/12/15.
@@ -17,47 +17,29 @@ import model.Location;
  * accepts Location list and converts them into Arrays to feed to
  * the grid layout UI elements.
  */
-public class LocationGridAdapter extends BaseAdapter {
+public class LocationAdapter extends BaseAdapter {
 
     /**
      * Context required for getting string resources
      */
     private Context mContext;
+    private ArrayList<Location> locations;
 
-    /** Define arrays */
-    private final String[] mAreas;
-    private final String[] mCountries;
-    private final String[] mRegions;
     /**
      * Constructor to pass the context and weather data.
      * @param context Application's context
      * @param locations Location array
      */
-    public LocationGridAdapter(Context context, ArrayList<Location> locations) {
+    public LocationAdapter(Context context, ArrayList<Location> locations) {
         this.mContext = context;
 
-        /** ArrayList for each data elements in Weather object */
-        ArrayList<String> areas = new ArrayList<>();
-        ArrayList<String> countries = new ArrayList<>();
-        ArrayList<String> regions = new ArrayList<>();
-
-        /** Construct ArrayList from the data */
-        for (Location location : locations) {
-            areas.add(location.getAreaName());
-            countries.add(location.getCountry());
-            regions.add(location.getRegion());
-        }
-
-        /** Convert ArrayList to arrays so they can be used in GridView UI */
-        this.mAreas = areas.toArray(new String[locations.size()]);
-        this.mCountries = countries.toArray(new String[locations.size()]);
-        this.mRegions = regions.toArray(new String[locations.size()]);
+        this.locations = locations;
 
     }
 
     @Override
     public int getCount() {
-        return mAreas.length;
+        return locations.size();
     }
 
     @Override
@@ -75,7 +57,7 @@ public class LocationGridAdapter extends BaseAdapter {
         View locationGrid;
         if (convertView==null) {
             LayoutInflater inflater = (LayoutInflater)mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            locationGrid = inflater.inflate(R.layout.location_single, null);
+            locationGrid = inflater.inflate(R.layout.location_single, parent, false);
         } else {
             locationGrid = convertView;
         }
@@ -85,10 +67,12 @@ public class LocationGridAdapter extends BaseAdapter {
         TextView textViewCountry = (TextView)locationGrid.findViewById(R.id.location_single_text_view_country);
         TextView textViewRegion = (TextView)locationGrid.findViewById(R.id.location_single_text_view_region);
 
+        Location location = locations.get(position);
+
         /** Set values to the UI elements */
-        textViewArea.setText(mAreas[position]);
-        textViewCountry.setText(mCountries[position]);
-        textViewRegion.setText(mRegions[position]);
+        textViewArea.setText(location.getAreaName());
+        textViewCountry.setText(location.getCountry());
+        textViewRegion.setText(location.getRegion());
 
         return locationGrid;
     }

@@ -15,8 +15,8 @@ import android.widget.TextView;
 import java.net.MalformedURLException;
 import java.util.ArrayList;
 
-import model.Weather;
-import service.DownloadIconTask;
+import com.suraj.examples.myweather.model.Weather;
+import com.suraj.examples.myweather.service.DownloadIconTask;
 
 /**
  * Created by suraj bhattarai on 7/10/15.

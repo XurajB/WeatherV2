@@ -3,7 +3,7 @@ package com.suraj.examples.myweather;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-import service.Utils;
+import com.suraj.examples.myweather.service.Utils;
 
 /**
  * Created by surajbhattarai on 9/11/15.

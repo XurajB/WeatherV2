@@ -1,4 +1,4 @@
-package service;
+package com.suraj.examples.myweather.service;
 
 import android.content.Context;
 

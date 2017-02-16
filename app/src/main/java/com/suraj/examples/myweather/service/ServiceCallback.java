@@ -1,8 +1,4 @@
-package service;
-
-import java.util.Objects;
-
-import model.WeatherData;
+package com.suraj.examples.myweather.service;
 
 /**
  * Created by suraj bhattarai on 7/10/15.
@@ -19,5 +15,6 @@ public interface ServiceCallback {
      * Handle when error is received back from API call or any exception is caught
      * @param message Error message
      */
+    // no need message
     void onFailure(String message);
 }

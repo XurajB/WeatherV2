@@ -14,8 +14,8 @@ import android.widget.GridView;
 
 import java.util.ArrayList;
 
-import model.Location;
-import model.Weather;
+import com.suraj.examples.myweather.model.Location;
+import com.suraj.examples.myweather.model.Weather;
 
 /**
  * This class displays the five day forecast dialog fragment using ForecastGridAdapter

@@ -1,10 +1,12 @@
-package service;
+package com.suraj.examples.myweather.service;
 
 import android.content.Context;
 import android.net.Uri;
 import android.os.AsyncTask;
 
 import com.suraj.examples.myweather.R;
+import com.suraj.examples.myweather.model.Location;
+import com.suraj.examples.myweather.model.WeatherData;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -17,19 +19,18 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
 
-import model.Location;
-import model.WeatherData;
-
 /**
  * Created by suraj bhattarai on 7/10/15.
  * This class gets weather data from the World Weather Online API using unique API KEY.
  */
 public class WeatherService {
     private ServiceCallback mServiceCallback;
+
+    // dont need context
     private Context mContext;
 
     /** Unique API key and End point URL */
-    public static final String API_KEY = "1c948d9233c04bb9b7940648171402";
+    private static final String API_KEY = "1c948d9233c04bb9b7940648171402";
     private static final String API_ENDPOINT = "http://api.worldweatheronline.com/premium/v1/weather.ashx?key=%s&q=%s&num_of_days=5&tp=24&format=json";
 
     /** Constructor to pass a callback object and context */

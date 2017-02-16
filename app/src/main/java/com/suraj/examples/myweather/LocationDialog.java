@@ -2,16 +2,13 @@ package com.suraj.examples.myweather;
 
 import android.app.Dialog;
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
@@ -20,13 +17,13 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-import model.Location;
-import service.LocationService;
-import service.ServiceCallback;
+import com.suraj.examples.myweather.model.Location;
+import com.suraj.examples.myweather.service.LocationService;
+import com.suraj.examples.myweather.service.ServiceCallback;
 
 /**
  * Created by suraj bhattarai on 7/12/15.
- * This class displays search location dialog fragment and displays matches using LocationGridAdapter
+ * This class displays search location dialog fragment and displays matches using LocationAdapter
  * User selection is passed into the main Activity from the callback interface.
  */
 public class LocationDialog extends DialogFragment implements ServiceCallback {
@@ -37,7 +34,6 @@ public class LocationDialog extends DialogFragment implements ServiceCallback {
 
     /** Define UI elements */
     private EditText mEditTextLocation;
-    private Button mButtonSearch;
     private ProgressDialog mProgressDialog;
     private GridView mLocationGrid;
 
@@ -60,7 +56,7 @@ public class LocationDialog extends DialogFragment implements ServiceCallback {
 
         /** Instantiate UI elements */
         mEditTextLocation = (EditText)mLocationSelectView.findViewById(R.id.location_fragment_edit_text_query);
-        mButtonSearch = (Button)mLocationSelectView.findViewById(R.id.location_fragment_button_search);
+        Button mButtonSearch = (Button) mLocationSelectView.findViewById(R.id.location_fragment_button_search);
         mLocationGrid = (GridView)mLocationSelectView.findViewById(R.id.location_fragment_location_grid);
 
         /** Search for possible locations when user taps on Search button */
@@ -114,7 +110,7 @@ public class LocationDialog extends DialogFragment implements ServiceCallback {
         mProgressDialog.setMessage(getString(R.string.searching_message));
         //mProgressDialog.show();
 
-        /** Call the weather service for weather data */
+        /** Call the weather com.suraj.examples.myweather.service for weather data */
         LocationService mLocationService = new LocationService(this, getActivity());
         mLocationService.getLocationData(query);
     }
@@ -140,8 +136,8 @@ public class LocationDialog extends DialogFragment implements ServiceCallback {
         if (mProgressDialog.isShowing()) mProgressDialog.hide();
         ArrayList<Location> locationList = (ArrayList<Location>)data;
         mLocations = locationList;
-        /** Create LocationGridAdapter and pass context and location data to display in UI */
-        LocationGridAdapter locationGridAdapter = new LocationGridAdapter(getActivity(), mLocations);
+        /** Create LocationAdapter and pass context and location data to display in UI */
+        LocationAdapter locationGridAdapter = new LocationAdapter(getActivity(), mLocations);
         mLocationGrid.setAdapter(locationGridAdapter);
     }
 

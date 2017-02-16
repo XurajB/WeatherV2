@@ -5,21 +5,16 @@
 package com.suraj.examples.myweather;
 
 import android.app.ProgressDialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.text.InputType;
-import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -28,12 +23,12 @@ import android.widget.Toast;
 import java.net.MalformedURLException;
 import java.util.ArrayList;
 
-import model.Location;
-import model.Weather;
-import model.WeatherData;
-import service.DownloadIconTask;
-import service.WeatherService;
-import service.ServiceCallback;
+import com.suraj.examples.myweather.model.Location;
+import com.suraj.examples.myweather.model.Weather;
+import com.suraj.examples.myweather.model.WeatherData;
+import com.suraj.examples.myweather.service.DownloadIconTask;
+import com.suraj.examples.myweather.service.WeatherService;
+import com.suraj.examples.myweather.service.ServiceCallback;
 
 /**
  * Main activity for the application. It sets the UI for the user to interact with
@@ -121,7 +116,7 @@ public class MyWeatherActivity extends AppCompatActivity implements ServiceCallb
         mProgressDialog = new ProgressDialog(this);
         mProgressDialog.setMessage(getString(R.string.loading_message));
         mProgressDialog.show();
-        /** Call the weather service for weather data */
+        /** Call the weather com.suraj.examples.myweather.service for weather data */
         WeatherService mWeatherService = new WeatherService(this, this);
         mWeatherService.getWeatherData(location);
     }

@@ -1,40 +1,34 @@
-package model;
-
-import android.provider.ContactsContract;
+package com.suraj.examples.myweather.model;
 
 import org.json.JSONObject;
 
 /**
  * Created by suraj bhattarai on 7/10/15.
- * POJO to store Hourly JSON object received from the API call
+ * POJO to store current condition JSON object received from the API call
  */
-public class Hourly implements DataPopulator {
+public class CurrentCondition implements DataPopulator {
 
     /** Define variables */
-    private int mTemperature;
     private double mPrecipitation;
     private String mDescription;
     private String mIconUrl;
+    private int mTemperature;
 
     /** Define getters */
+    public double getPrecipitation() {
+        return mPrecipitation;
+    }
+    public String getDescription() {
+        return mDescription;
+    }
+    public String getIconUrl() {
+        return mIconUrl;
+    }
     public int getTemperature() {
         return mTemperature;
     }
 
-    public double getPrecipitation() {
-        return mPrecipitation;
-    }
-
-    public String getDescription() {
-        return mDescription;
-    }
-
-    public String getIconUrl() {
-        return mIconUrl;
-    }
-
-    /** Populate data.
-     * Description and Icon url values come in separate objects. */
+    /** populate data */
     @Override
     public void populateData(JSONObject data) {
         this.mPrecipitation = data.optDouble("precipMM");

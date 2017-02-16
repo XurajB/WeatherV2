@@ -1,4 +1,4 @@
-package service;
+package com.suraj.examples.myweather.service;
 
 import android.content.Context;
 import android.net.Uri;
@@ -10,15 +10,13 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.URL;
-import java.net.URLConnection;
 import java.util.ArrayList;
 
-import model.Location;
+import com.suraj.examples.myweather.model.Location;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 /**
  * Created by surajbhattarai on 7/12/15.
@@ -27,6 +25,7 @@ import model.Location;
 public class LocationService {
     private ServiceCallback mServiceCallback;
     private Context mContext;
+    private OkHttpClient client;
 
     private static final String API_ENDPOINT = "http://api.worldweatheronline.com/premium/v1/search.ashx?key=%s&query=%s&num_of_results=5&format=json";
 
@@ -34,6 +33,7 @@ public class LocationService {
     public LocationService(ServiceCallback serviceCallback, Context context) {
         this.mServiceCallback = serviceCallback;
         this.mContext = context;
+        this.client = new OkHttpClient();
     }
 
     /**
@@ -47,20 +47,12 @@ public class LocationService {
                 /** Combine API URL, API key and query into one URL */
                 String apiUrl = String.format(API_ENDPOINT, Uri.encode(WeatherService.API_KEY),Uri.encode(query));
                 try {
-                    URL endPointUrl = new URL(apiUrl);
-                    URLConnection urlConnection = endPointUrl.openConnection();
-                    InputStream inputStream = urlConnection.getInputStream();
-                    BufferedReader bufferedReader = new BufferedReader( new InputStreamReader(inputStream));
-                    StringBuilder data = new StringBuilder();
-                    String readLine;
-                    while ((readLine = bufferedReader.readLine()) != null) {
-                        data.append(readLine);
-                    }
-                    /** Close connections */
-                    inputStream.close();
-                    bufferedReader.close();
-                    /** Return location data */
-                    return data.toString();
+                    Request request = new Request.Builder()
+                            .url(apiUrl)
+                            .build();
+
+                    Response response = client.newCall(request).execute();
+                    return response.body().string();
 
                 } catch (IOException e) {
                     e.printStackTrace();

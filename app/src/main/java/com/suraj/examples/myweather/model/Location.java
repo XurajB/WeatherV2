@@ -1,4 +1,4 @@
-package model;
+package com.suraj.examples.myweather.model;
 
 import org.json.JSONObject;
 
